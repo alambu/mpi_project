@@ -47,10 +47,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/expense/index');
         $this->load->view('admin/footer');
   }
-  public function get_content()
-  {
-	  echo "test";
-  }
+
   public function daily_expense()
   {
         $this->load->view('admin/expense/daily_expense');
