@@ -61,8 +61,6 @@ extract($input);
 								</button>
 												
                                 </div>
-							
-								
 								</div>
 							</form>	
 						 </div>
