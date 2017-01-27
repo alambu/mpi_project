@@ -15,7 +15,6 @@ class Admin extends CI_Controller
 		
     }
   //get online all students
-  
   public function online_student()
   {    
         $data['info']=$this->lib->get_online_std();
@@ -47,6 +46,10 @@ class Admin extends CI_Controller
         $this->load->view('admin/sidebar');
         $this->load->view('admin/expense/index');
         $this->load->view('admin/footer');
+  }
+  public function get_content()
+  {
+	  echo "test";
   }
   public function daily_expense()
   {
