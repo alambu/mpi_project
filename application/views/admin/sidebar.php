@@ -139,7 +139,8 @@
                           <span>Result Management</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="admin/institute_result">Institute Result</a></li>
+                          <li><a  href="admin/institute_result">Entry Institute Result</a></li>
+                          <li><a  href="admin/institute_result_update">Update Institute Result</a></li>
                           <li><a  href="admin/board_results">Board Result</a></li>
                       </ul>
                   </li>
