@@ -102,7 +102,7 @@
                                     <tbody>
 									<?php $totalcr=0;$nr=1;foreach($rs as $r):
 									$totalcr+=$r->sub_credit;
-									$totaldr+=$r->grade_point;
+									$totalscore+=$r->grade_point*$r->sub_credit;
 									?>
                                         <tr>
 											<td><?php echo $nr++?></td>
@@ -112,7 +112,7 @@
 										</tr>
 										<?php endforeach;?>
 										<tr><td colspan='2' align='right'>CGPA</td>
-										<td><?php echo number_format($totaldr/$totalcr,2)?></td>
+										<td><?php echo number_format($totalscore/$totalcr,2)?></td>
 										<td></td>
 										</tr>
                                 </tbody>

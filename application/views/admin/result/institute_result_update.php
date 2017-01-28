@@ -9,7 +9,7 @@ extract($input);
                   <div class="col-lg-12">
                       <section class="panel">
                         <header class="panel-heading clearfix">
-                        <h3 class="pull-left text-left">Entry Institute Result</h3>
+                        <h3 class="pull-left text-left">Update Institute Result</h3>
                          <div class="form">
 						 <form action="" method="post">
 						  <div class="padding-zero col-md-12">
@@ -28,7 +28,7 @@ extract($input);
 								   <div class="form-group p-left0 col-sm-4">
                                               <label class="">Department</label>
                                                <?php $dP = $this->db->get('department')->result(); ?>
-                                                <select name="dept_id" class="form-control" onchange="window.location='admin/institute_result/'+this.value+'/'+session.value" required >
+                                                <select name="dept_id" class="form-control" onchange="window.location='admin/institute_result_update/'+this.value+'/'+session.value" required >
                                                     <option value="">-Select-</option>
                                                     <?php foreach ( $dP as $d): ?>
                                                     <option value="<?php echo $d->id; ?>" <?php if($d->id==$dept_id): echo "SELECTED";endif;?>><?php echo $d->dept_name; ?></option>
@@ -81,7 +81,7 @@ extract($input);
                           </header>
            <div class="panel-body">
                   <div class="adv-table">
-                       <form action="admin/result_published" method="post">
+                       <form action="admin/result_published_update" method="post">
 							
 									<table class="display table table-striped">
                                       <thead>
@@ -98,48 +98,40 @@ extract($input);
 									
                                       <?php 
 									  $nr=1;foreach($row as $r): 
-									  $n=$this->lib->chlk_published_result($r->roll_no,$r->session,$r->dept_id,$semester_id,$subject_id);
-									  if($n<1):
+									
 									  ?>
                                           <tr>
                                               
                                               <td><?php echo $nr++; ?></td>
-                                              <td><?php echo $r->name;?></td>
+                                              <td><?php //echo $r->name;?></td>
                                               <td><?php echo $r->roll_no;?></td>
                                               <td><?php echo $r->reg_no;?></td>
-                                              <td><input type='text' name='grade_point[]'/></td>
+                                              <td><input type='text' name='grade_point[]' value="<?php echo $r->grade_point?>"/></td>
                                               <td>
 											   <select name='grade[]' class="form-control" requred>
 											      <option value=''>--select--</option>
-												  <option value='A+'>A+</option>
-												  <option value='A'>A</option>
-												  <option value='A-'>A-</option>
-												  <option value='B+'>B+</option>
-												  <option value='B'>B</option>
-												  <option value='B-'>B-</option>
-												  <option value='C+'>C+</option>
-												  <option value='C'>C</option>
-												  <option value='D'>D</option>
-												  <option value='F'>F</option>
+												  <option value='A+' <?php echo ($r->grade=='A+') ? 'SELECTED':'';?>>A+</option>
+												  <option value='A' <?php echo ($r->grade=='A') ? 'SELECTED':'';?>>A</option>
+												  <option value='A-' <?php echo ($r->grade=='A-') ? 'SELECTED':'';?>>A-</option>
+												  <option value='B+' <?php echo ($r->grade=='B+') ? 'SELECTED':'';?>>B+</option>
+												  <option value='B' <?php echo ($r->grade=='B') ? 'SELECTED':'';?>>B</option>
+												  <option value='B-' <?php echo ($r->grade=='B-') ? 'SELECTED':'';?>>B-</option>
+												  <option value='C+' <?php echo ($r->grade=='C+') ? 'SELECTED':'';?>>C+</option>
+												  <option value='C' <?php echo ($r->grade=='C') ? 'SELECTED':'';?>>C</option>
+												  <option value='D' <?php echo ($r->grade=='D') ? 'SELECTED':'';?>>D</option>
+												  <option value='F' <?php echo ($r->grade=='F') ? 'SELECTED':'';?>>F</option>
 											   </select>
 											  </td>
-                                              <input type="hidden" name="roll_no[]" value="<?php echo $r->roll_no?>"/>
-                                              <input type="hidden" name="reg_no[]" value="<?php echo $r->reg_no?>"/>
-                                              <input type="hidden" name="session_id" value="<?php echo $session?>"/>
-                                              <input type="hidden" name="dept_id" value="<?php echo $dept_id?>"/>
-                                              <input type="hidden" name="semester_id" value="<?php echo $semester_id?>"/>
-                                              <input type="hidden" name="subject_id" value="<?php echo $subject_id?>"/>
-                                              <input type="hidden" name="sub_credit" value="<?php echo $sub_credit?>"/>
-                                             
-											  
+                                              <input type="hidden" name="id[]" value="<?php echo $r->id?>"/>
+                                                
+	  
                                           </tr>
-										  <?php else: endif;?>
                                       <?php endforeach; ?>
                                     </tbody>
                           </table>
 						   <div class="form-group">
                                           <div class="col-lg-offset-4 col-lg-4">
-                                              <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> Save</button>
+                                              <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> Update</button>
                                               <button class="btn btn-danger" type="reset"><i class="fa  fa-refresh"></i> Cancel</button>
                                           </div>
                                       </div>

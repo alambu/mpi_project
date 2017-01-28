@@ -107,6 +107,31 @@ class Library extends CI_Model {
 		return $this->db->select('voucher_no')->from('mpi_debit_voucher')->order_by('voucher_no','DESC')->limit(1)->get()->row()->voucher_no+1;
 	}
 	
+	//result section 
+	
+	public function chlk_published_result($roll_no,$session_id,$dept_id,$semester_id,$subject_id)
+	{
+		$this->db->query("select * from institute_result where roll_no='$roll_no' and session_id='$session_id' and dept_id='$dept_id' and semester_id='$semester_id' and subject_id='$subject_id'")->row();
+		return $this->db->affected_rows();
+		
+	}
+	
+	//get entry result information for update
+	
+	public function get_published_student_result($filter){
+	 
+	return $this->db->order_by('roll_no','ASC')->get_where('institute_result',$filter)->result();
+	
+
+	  //$this->db
+                // ->join('department','department.id = studentinfo.dept_id')
+                // ->select('studentinfo.*,department.dept_name')
+				// ->where($filter)
+                // ->get('studentinfo')->result();
+	 
+	}
+	
+	
 	
 	public function getStudentinfo($filter){
 	 
