@@ -849,14 +849,15 @@ public function bill_collection_reports()
     }
 	
 	//result management
-	public function institute_result($filter='id>0')
+	public function institute_result($filter='id<1')
 	{   
 		if($_POST):
 		$filter=$this->input->post(null);
 		extract($filter);
 		$filter=array('session'=>$session,'dept_id'=>$dept_id);
-		endif;
+		$data['sb']=$this->db->where('dept_id',$dept_id)->get("subjects")->result();
 		$data['row']=$this->lib->getstudentinfo($filter);	
+		endif;
 		$this->load->view('admin/header');
 		$this->load->view('admin/sidebar');
 		$this->load->view('admin/result/institute_result',$data);
@@ -866,7 +867,13 @@ public function bill_collection_reports()
 	{		
 	$input = $this->input->post(null);	
 	extract($input);
-	
+	//existing result entry check.
+	$this->db->query("select * from institute_result where session_id='$session_id' and dept_id='$dept_id' and semester_id='$semester_id' and subject_id='$subject_id'")->row();
+	if($this->db->affected_rows()>0):
+	 	toast_set('error','Sorry this result already Uploaded');
+	redirect('admin/institute_result');
+	exit;
+	endif;
 	// echo "<pre>";
 	// print_r($input);exit;
 	$roll_no= $this->input->post("roll_no");
@@ -878,6 +885,7 @@ public function bill_collection_reports()
         $data['grade'] = $input['grade'][$i];
         $data['session_id'] =$session_id;
         $data['dept_id'] = $dept_id;
+        $data['subject_id'] = $subject_id;
         $data['semester_id'] = $semester_id;
         $data['sub_credit'] = $sub_credit;
 		if($input['grade_point'][$i]>0):

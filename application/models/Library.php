@@ -11,6 +11,10 @@ class Library extends CI_Model {
 		return $this->db->query("select d.dept_name from department d inner join studentinfo s on d.id=s.dept_id where s.roll_no='$roll_no'")->row();
 	}
 	
+	public function get_offered_sub($dept)
+	{
+		return $this->db->where('dept_id',$dept)->get("subjects")->result();
+	}
 	function get_academic_details($type)
 	{
 	return $qy=$this->db

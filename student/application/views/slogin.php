@@ -22,7 +22,7 @@
                 	
                     <div class="about-icst col-padded"><!-- inner custom column -->
                     <div class="col-lg-12">
-                        <h1 class="page-title text-center">Student Login</h1>
+                        <h1 class="page-title text-center">Student Portal</h1>
                     </div>
                     <div class="s-login-margin">
                     	<div class="row gutter"><!-- row -->
@@ -40,10 +40,38 @@
                                     <form method="post" action="mpi/login_action">
                                         <div class="row"><!-- starts row -->
                                             <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                                <label>Session</label>
+                                                <select name="session" class="form-control" placeholder="Session" data-bv-notempty="true" data-bv-field="Session is required" required>
+										<option value="">-Select-</option>
+									   <?php $session_data=$this->db->get("mpi_session")->result();
+									   foreach($session_data as $sess):
+									   ?>
+										<option value="<?php echo $sess->id?>"><?php echo $sess->title?></option>
+									   <?php endforeach;?>
+									</select>
+                                            </div>
+                                        </div><!-- ends row -->
+										
+										 <div class="row"><!-- starts row -->
+                                            <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                                <label>Department</label>
+                                                <?php $dP = $this->db->get('department')->result(); ?>
+                                                <select name="dept_id" class="form-control" placeholder="Department" data-bv-notempty="true" data-bv-field="Department is required" required >
+                                                    <option value="">-Select-</option>
+                                                    <?php foreach ( $dP as $d): ?>
+                                                    <option value="<?php echo $d->id; ?>"><?php echo $d->dept_name; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div><!-- ends row -->
+										 <div class="row"><!-- starts row -->
+                                            <div class="form-group col-lg-12 col-md-12 col-sm-12">
                                                 <label>Username</label>
                                                 <input type="text" name="name" class="form-control" placeholder="Username">
                                             </div>
                                         </div><!-- ends row -->
+										
+										
                                         <div class="row">
                                             <div class="form-group col-lg-12 col-md-12 col-sm-12">
                                                 <label>Password</label>

@@ -65,23 +65,22 @@ extract($input);
 							</form>	
 						 </div>
                           </header>
-                            <div class="panel-body">
-                                <div class="adv-table">
-                                    <form action="admin/result_published" method="post">
+           <div class="panel-body">
+                  <div class="adv-table">
+                       <form action="admin/result_published" method="post">
 										<div class="form-group p-left0 col-sm-4 ">
-                                                  <label class="">Subject</label>
-                                                <?php $sb = $this->db->get('subjects')->result(); ?>
-                                                <select name="subject_id" class="form-control" placeholder="Semester" data-bv-notempty="true" data-bv-field="Semester is required">
-                                                    <option value="">-Select-</option>
-                                                    <?php foreach ( $sb as $s): ?>
-                                                    <option value="<?php echo $s->id; ?>" <?php if($s->id==$input['semester_id']): echo "SELECTED";endif;?>><?php echo $s->subject_name; ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
+                                  <label class="">Subject</label>    
+								<select name="subject_id" class="form-control" required >
+									<option value="">-Select-</option>
+									<?php foreach ( $sb as $s): ?>
+									<option value="<?php echo $s->id; ?>" <?php if($s->id==$input['semester_id']): echo "SELECTED";endif;?>><?php echo $s->subject_name ?>&nbsp;[ <?php echo $s->subject_code?> ]</option>
+									<?php endforeach; ?>
+								</select>
 
                               </div> 
 						     <div class="form-group p-left0 col-sm-4 ">
 								  <label class="">Subject Credit</label>
-								<input type="text" name="sub_credit" class="form-control" value="<?php echo $sub_credit?>"/>
+								<input type="text" name="sub_credit" class="form-control"/>
 
                               </div> 
 									<table class="display table table-striped">
@@ -118,6 +117,7 @@ extract($input);
 												  <option value='C+'>C+</option>
 												  <option value='C'>C</option>
 												  <option value='D'>D</option>
+												  <option value='F'>F</option>
 											   </select>
 											  </td>
                                               <input type="hidden" name="roll_no[]" value="<?php echo $r->roll_no?>"/>
@@ -125,7 +125,7 @@ extract($input);
                                               <input type="hidden" name="session_id" value="<?php echo $session?>"/>
                                               <input type="hidden" name="dept_id" value="<?php echo $dept_id?>"/>
                                               <input type="hidden" name="semester_id" value="<?php echo $semester_id?>"/>
-                                              <input type="hidden" name="sub_credit" value="<?php echo $sub_credit?>"/>
+                                             
 											  
                                           </tr>
                                       <?php endforeach; ?>
