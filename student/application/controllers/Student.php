@@ -47,13 +47,33 @@ class Student extends CI_Controller {
             $this->load->view('blood_bank');
             $this->load->view('footer');
         }
-    
+		public function get_institute_result()
+		{
+			extract($this->session->all_userdata());
+			if($session_id!=''){
+				$branN=$this->db->query("SELECT i.grade_point,i.grade,s.subject_name FROM `institute_result` i  left join subjects s on i.subject_id=s.id WHERE i.session_id=$session_id and i.dept_id=$dept_id and i.semester_id=$semester_id and i.roll_no=$roll_no");
+			}
+     			
+
+		}
      
         public function sresult()
         {
-            $this->load->view('header');
-            $this->load->view('sresult');
+			$semester_id=$this->uri->segment(3);
+			extract($this->session->all_userdata());
+			if($semester_id!=''){
+				$data['semester_id']=$semester_id;
+				$data['rs']=$this->db->query("SELECT i.grade_point,i.grade,i.sub_credit,s.subject_name FROM `institute_result` i  left join subjects s on i.subject_id=s.id WHERE i.session_id=$session_id and i.dept_id=$dept_id and i.semester_id=$semester_id and i.roll_no=$roll_no")->result();
+				$this->load->view('header');
+            $this->load->view('sresult',$data);
             $this->load->view('footer');
+			}
+			else{		
+			$this->load->view('header');
+			$this->load->view('sresult');
+			$this->load->view('footer');
+			}
+            
         }
 		public function bill_collection_reports()
 		{

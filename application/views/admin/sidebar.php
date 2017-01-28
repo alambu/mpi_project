@@ -57,7 +57,7 @@
                           <li><a  href="admin/admission_details">Admission</a></li>   
                           <li><a  href="admin/sub_manage">Subject Management</a></li>
                           <li><a  href="admin/manage_session">Session Management</a></li>
-                          <li><a  href="admin/subject_offer">Subject Offer</a></li>
+                       <!--   <li><a  href="admin/subject_offer">Subject Offer</a></li>-->
                         <!--  <li><a  href="admin/subject_offer_list">Offered Subjects</a></li>-->
                           <li><a  href="admin/sylabus">Sylabus</a></li>
                           <li><a  href="admin/add_routine">Class Routine</a></li>

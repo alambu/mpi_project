@@ -78,17 +78,12 @@
                                         <form action="">
                                             <div class="form-group col-lg-12 col-md-12 col-sm-12">
                                                <label></label>
-                                                <select name="" class="form-control">
+                                                <select name="semester_id" id="semester_id" class="form-control" onchange="window.location='student/sresult/'+this.value">
                                                     <option value="">---Select Semester----</option>
-                                                    <option value="1">First Semester</option>
-                                                    <option value="2">Second Semester</option>
-                                                    <option value="3">Thrid Semester</option>
-                                                    <option value="4">Four Semester</option>
-                                                    <option value="5">Five Semester</option>
-                                                    <option value="6">Six Semester</option>
-                                                    <option value="7">Seven Semester</option>
-                                                    <option value="8">Eight Semester</option>
-                                                    <option value="-1">All Semester</option>
+                                                    <option value="1" <?php echo ($semester_id==1) ? 'SELECTED':'';?>>First Semester</option>
+                                                    <option value="2" <?php echo ($semester_id==2) ? 'SELECTED':'';?>>Second Semester</option>
+                                                    <option value="3" <?php echo ($semester_id==3) ? 'SELECTED':'';?>>Thrid Semester</option>
+                                                    
                                                 </select>
                                             </div>
                                         </form>
@@ -105,48 +100,21 @@
                                             </tr>
                                         </thead>
                                     <tbody>
+									<?php $totalcr=0;$nr=1;foreach($rs as $r):
+									$totalcr+=$r->sub_credit;
+									$totaldr+=$r->grade_point;
+									?>
                                         <tr>
-                                            <td>1</td>
-                                            <td>Engineering Drawing</td>
-                                            <td>3.31</td>
-                                            <td>B+</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Engineering Drawing</td>
-                                            <td>3.31</td>
-                                            <td>B+</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Engineering Drawing</td>
-                                            <td>3.31</td>
-                                            <td>B+</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Engineering Drawing</td>
-                                            <td>3.31</td>
-                                            <td>B+</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Engineering Drawing</td>
-                                            <td>3.31</td>
-                                            <td>B+</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Engineering Drawing</td>
-                                            <td>3.31</td>
-                                            <td>B+</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Engineering Drawing</td>
-                                            <td>3.31</td>
-                                            <td>B+</td>
-                                        </tr>
+											<td><?php echo $nr++?></td>
+											<td><?php echo $r->subject_name;?></td>
+											<td><?php echo $r->grade_point;?></td>
+											<td><?php echo $r->grade;?></td>
+										</tr>
+										<?php endforeach;?>
+										<tr><td colspan='2' align='right'>CGPA</td>
+										<td><?php echo number_format($totaldr/$totalcr,2)?></td>
+										<td></td>
+										</tr>
                                 </tbody>
                             </table>
                             </div>  

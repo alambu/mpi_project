@@ -14,7 +14,7 @@ class Mpi extends CI_Controller {
 		{
 
         $input = $this->input->post(null);
-        $check_user = $this->db->where('roll_no',$input['name'])->where('password',$input['password'])->get('studentinfo')->row();
+        $check_user = $this->db->where('roll_no',$input['name'])->where('session',$input['session'])->where('dept_id',$input['dept_id'])->where('password',$input['password'])->get('studentinfo')->row();
 		// echo $this->db->last_query();exit;
 		if($this->db->affected_rows()>0):
 		
