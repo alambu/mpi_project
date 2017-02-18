@@ -1,0 +1,13 @@
+Database: kapasiag_barishabaup
+Database: kapasiag_chandpurup
+Database: kapasiag_durgapurup
+Database: kapasiag_ghagatiaup
+Database: kapasiag_kapasiaup
+Database: kapasiag_karihataup
+Database: kapasiag_rayedup
+Database: kapasiag_sanmaniaup
+Database: kapasiag_singhasreeup
+Database: kapasiag_targaonup
+Database: kapasiag_tokup
+user: kapasiag_allup
+password : 266[O;L?HN^v

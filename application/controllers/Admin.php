@@ -909,7 +909,7 @@ public function bill_collection_reports()
         $data['subject_id'] = $subject_id;
         $data['semester_id'] = $semester_id;
         $data['sub_credit'] = $sub_credit;
-		if($input['grade_point'][$i]>=0):
+		if($input['grade'][$i]!=''):
         $this->db->insert("institute_result",$data);
 		endif;
         $i++;
@@ -973,7 +973,7 @@ public function bill_collection_reports()
        
         $data['grade_point'] = $input['grade_point'][$i];
         $data['grade'] = $input['grade'][$i]; 
-		if($input['grade_point'][$i]>=0):
+		if($input['grade'][$i]!=''):
 	    $id=$input['id'][$i];
 		$this->db->where('id',$id);
         $this->db->update("institute_result",$data);
@@ -1186,7 +1186,7 @@ public function student_bil_info($filter=array('id >'=>'0'))
 		extract($input);
 		$date=explode("-",$input['notice_date']);
 		$newDate=$date[2].'-'.$date[1].'-'.$date[0];
-		$input['notice_date']=$newDate;
+		$input['notice_date']=trim($newDate);
         //var_dump($input);
         if ($_FILES['notice_file']['name'] != '') {
             $ext = strtolower(pathinfo($_FILES['notice_file']['name'], PATHINFO_EXTENSION));
@@ -1194,7 +1194,7 @@ public function student_bil_info($filter=array('id >'=>'0'))
             move_uploaded_file($_FILES['notice_file']['tmp_name'], './uploads/notices/' . $name);
             $input['notice_file'] = $name;
         }
-		// print_r($input);exit;
+		//print_r($input);exit;
         $this->db->insert('notices',$input);
 		if($notice_type==3):
 		redirect('admin/board_results','location');
