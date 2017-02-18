@@ -34,15 +34,16 @@
                                 
                                 <div class="row">
                                     <div class="col-sm-4">
-                                       <h6>Address</h6>
+                                       <h6>MPI</h6>
                                        <div class="foot">
                                        <address>
-                                        <strong>Mirpur Polytechnic Institute</strong>
+                                        <strong>Mirpur Polytechnic Institute(MPI)</strong>
                                         <span>Mirpur-1, Dhaka, Bangladesh</span>
                                         <ul class="foot-contact">
-                                            <li><strong>TEL:</strong> 0088-0331-62266</li>
+                                           
                                             <li><Strong>MOBILE:</Strong>+8801934-884606, +8801711-949390</li>
-                                            <li><Strong>EMAIL:</Strong> MPI69016@GMAIL.COM</li>
+                                            <li><Strong>EMAIL:</Strong> mpi50455@yahoo.com</li>
+                                            <li><Strong>Address:</Strong> 397, Mukto Bangla Complex(5th Floor),Mirpur-1,Dhaka-1216</li>
                                         </ul>
                                         </address>
                                         </div>

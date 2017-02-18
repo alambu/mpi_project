@@ -58,7 +58,7 @@ color:black;
 				foreach($info as $row):
 				
 				?>
-                	<div class="box" style="height:250px;margin-bottom:1em;"><img src="<?php echo $row->picture?>" alt="" width="150" height="180" />
+                	<div class="box" style="height:250px;margin-bottom:1em;"><img src="uploads/<?php echo $row->image?>" alt="" width="150" height="180" />
 					
 					 <ul>
                             <li><strong>Teacher Name  :</strong><span><?php echo $row->name?> </span></li>
